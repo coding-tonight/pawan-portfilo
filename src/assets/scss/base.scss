@@ -1,0 +1,41 @@
+@import './taiiwind.scss';
+@import './variable.scss';
+@import './terminal.scss';
+
+@font-face {
+    font-family: 'rabbit';
+    font-style: bold;
+    font-weight: 700;
+    src: url('../font/whitrabt.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'rabbit';
+    font-style: bold;
+    font-weight: 700;
+    src: url('../font/WhiteRabbit.woff2') format('woff2');
+}
+
+// reset default browser style
+@mixin reset {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    @include reset;
+    font-family: 'rabbit';
+    &::after {
+        @include reset;
+    }
+    &::before {
+        @include reset;
+    }
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'rabbit';
+    user-select: none;
+}
+

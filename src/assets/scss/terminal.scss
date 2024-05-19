@@ -1,0 +1,17 @@
+.terminal-container {
+    background-image: url('/background.gif') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-clip: border-box;
+    background-attachment: fixed;
+    min-height: 100dvh;
+
+    .terminal-content {
+        background: rgb(1,1,13);
+        background: linear-gradient(90deg, rgba(1,1,13,0.6264705711386117) 100%, rgba(3,0,8,0.48921566917782733) 100%, rgba(0,212,255,1) 100%); 
+        // background: rgb(2,0,36);
+        // background: linear-gradient(90deg, rgba(2,0,36,0.6264705711386117) 100%, rgba(3,0,8,0.48921566917782733) 100%, rgba(0,212,255,1) 100%); 
+    }
+}
+
