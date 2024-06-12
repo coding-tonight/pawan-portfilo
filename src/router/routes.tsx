@@ -1,11 +1,15 @@
 import { lazy } from "react"
 
 const Terminal = lazy(() => import('@/pages/terminal'))
+const GuestLayout = lazy(() => import('@/layouts/GuestLayout'))
 
 const routes = [
     {
-        key: 'terminal-mode',
         path: '/',
+        element: <GuestLayout />
+    },
+    {
+        path: '/terminal',
         element: <Terminal />
     }
 ]

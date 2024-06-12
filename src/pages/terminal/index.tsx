@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, useRef, useEffect } from 'react'
 
 import { CgClose , CgTerminal} from "react-icons/cg"
 
@@ -6,29 +6,46 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card"
 
 import { TerminalLayout } from "@/layouts"
 
+
 const Terminal = () => {
     const [command, setCommand] = useState<string>('')
+    const commandRef = useRef<HTMLCollectionBase | null>(null)
 
     const handleInput = (event: FormEvent<HTMLInputElement>): void => {
         setCommand(event.currentTarget.value);
-        };
+    };
+
+    const handleEnterPress = (event: KeyboardEvent): void => {
+        if(event?.key === 'Enter') {
+            console.log('enter is press')
+        }
+    }
+
+    useEffect( () => {
+      commandRef?.current?.focus()
+    }, [])
 
     return (
         <TerminalLayout>
             <section className="container mx-auto md:w-[65%] sm:w-[80%]">
              <Card>
-                <CardHeader className="shadow bg-black rounded-[5px]">
+                <CardHeader className="shadow bg-black rounded-[6px] cursor-grab">
                   <div className="flex justify-between items-center container">
                      <h5 className="flex items-center gap-2 text-sm"><CgTerminal /> Terminal</h5>
                      <CgClose className="cursor-pointer text-sm" />
                   </div>
                 </CardHeader>
                 <CardContent className="h-[400px] terminal-content p-4">
+                    <div className='highlight-color'>
+                        Type / !help
+                    </div>
                      <div className="flex gap-2">
-                        <h1>user@user:~$</h1>
-                        <input type='text' className="bg-transparent border-none outline-none w-[100%]" 
+                        <h1>guest:~$</h1>
+                        <input type='text' className="bg-transparent border-none outline-none w-[100%]"
+                            ref={commandRef} 
                             value={command}
-                            onInput={handleInput} 
+                            onInput={handleInput}
+                            onKeyUp={handleEnterPress} 
                         />
                      </div>
                 </CardContent>

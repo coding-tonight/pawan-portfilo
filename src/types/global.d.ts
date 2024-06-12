@@ -7,3 +7,10 @@ export interface ChildrenNode {
     children: children
 }
 
+
+export interface TerminalCommand {
+    description: string;
+    usage: string;
+    command: string,
+    index: number
+}
