@@ -1,11 +1,11 @@
-import { Navbar } from "@/components"
+import { Navbar, HeroSection } from "@/components"
 
-const GuestLayout = () => {
+const GuestLayout:React.FC = () => {
     return (
-        <>
-        <Navbar />
+        <>  
+        <Navbar  />
         <main>
-        <h1> this is guest layout</h1>
+          <HeroSection />
         </main>
         <footer> this is footer</footer>
         </>
