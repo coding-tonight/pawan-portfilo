@@ -3,6 +3,8 @@ import { Button } from "../ui/button"
 
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
 import { RxMoon, RxSun, RxCube } from "react-icons/rx";
+// import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar"
+
 
 const Navbar: React.FC = () => {
     return (
@@ -10,6 +12,12 @@ const Navbar: React.FC = () => {
             <section className="flex container justify-between p-2 mx-auto w-[95%]">
                 <h5 className="flex items-center gap-2">
                   <RxCube className="h-[40px] w-[34px]" />
+                   {/* <div className="flex justify-center">
+                    <Avatar className="h-[50px] w-[50px]">
+                        <AvatarImage src="avatar.jpeg" />
+                        <AvatarFallback>PM</AvatarFallback>
+                    </Avatar>
+                   </div> */}
                 </h5>
 
                 <nav className="flex">  

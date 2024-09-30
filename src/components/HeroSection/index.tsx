@@ -1,24 +1,16 @@
 import { Button } from "../ui/button"
-import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar"
 
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 const HeroSection: React.FC = () => {
   return (
-      <section className="container mx-auto text-center p-5">
+      <section className="container mx-auto text-center p-5 leading-6 mb-[100px]">
         <Button className="my-2 text-[0.7rem] rounded-xl" variant="link" size="sm">
           Switch to developer mode
           <div className="rounded-xl bg-slate-300  border ms-2">
             <ArrowRightIcon fontSize="sm" />
           </div>
         </Button>
-
-        <div className="flex justify-center">
-        <Avatar className="h-[40px]">
-            <AvatarImage src="avatar.jpeg" />
-            <AvatarFallback>PM</AvatarFallback>
-        </Avatar>
-        </div>
 
 
         <h1 className="text-md bolder sm:text-2xl my-2">Turning Vision into Interactive Reality</h1>
@@ -34,7 +26,7 @@ const HeroSection: React.FC = () => {
 
         <Button className="rounded-2xl bg-black hover:bg-black text-white mt-4">
           Let&#39;s Talk
-          <ArrowRightIcon fontSize="sm" className="ms-1" />
+            <ArrowRightIcon fontSize="sm" className="ms-1" />
         </Button>
       </section> 
   )

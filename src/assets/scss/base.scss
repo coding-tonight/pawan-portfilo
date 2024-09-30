@@ -1,6 +1,7 @@
 @import './taiiwind.scss';
 @import './variable.scss';
 @import './terminal.scss';
+@import './dark.scss';
 
 @font-face {
     font-family: 'rabbit';
@@ -34,9 +35,16 @@
     }
 }
 
-
-
 // reusable classes
 .highlight-color {
     color: #D4500B !important;
+}
+
+.glass-background {
+    background: rgba(126, 123, 123, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    // border: 1px solid rgba(20, 19, 19, 0.3);
 }

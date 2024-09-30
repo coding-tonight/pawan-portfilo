@@ -17,7 +17,7 @@ const Terminal = () => {
 
     const handleEnterPress = (event: KeyboardEvent): void => {
         if(event?.key === 'Enter') {
-            console.log('enter is press')
+            console.log(event.target.value)
         }
     }
 

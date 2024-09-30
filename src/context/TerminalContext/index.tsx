@@ -17,21 +17,10 @@ const initialValue: InitialValue = {
     status: 'idle' // loading, error, success, idle
 }
 
-// type ActionType = 
-//     | { type: 'increment' }
-//     | { type: 'decrement' }
-//     | { type: 'reset'; payload: number };
-
-// type TerminalCommandContextType = {
-//     state: any;
-//     dispatch: React.Dispatch<ActionType>;
-// };
-
-
-const TerminalCommand = createContext()
+const TerminalCommand = createContext<T>(null)
 
 const TerminalContextProvider = ({ children }: ChildrenNode) => {
-    const [state, dispatch] = useReducer(CommandReducer, initialValue)
+    const [state, dispatch] = useReducer<T>(CommandReducer, initialValue)
 
     const value = useMemo(() => [state, dispatch], [state])
 
