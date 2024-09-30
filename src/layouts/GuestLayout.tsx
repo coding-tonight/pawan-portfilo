@@ -1,4 +1,5 @@
-import { Navbar, HeroSection, Menu } from "@/components"
+import { Navbar, HeroSection, Menu  } from "@/components"
+import { Timeline } from "@/components/ui/timeline"
 
 const GuestLayout:React.FC = () => {
     return (
@@ -10,8 +11,11 @@ const GuestLayout:React.FC = () => {
           <HeroSection />
           <Menu />
           {/* <Tools /> */}
+          <Timeline data={[
+             { title: 'Student', content: 'Business Studies'},
+             { title: 'Frontend Developer', content: 'APA (Asia Population Association)'},
+             { title: 'Full Stack Developer', content: 'APA (Asia Population Association)'}]} />
         </main>
-        <footer> this is footer</footer>
         </>
     )
 }

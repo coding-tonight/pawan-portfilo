@@ -4,7 +4,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 const HeroSection: React.FC = () => {
   return (
-      <section className="container mx-auto text-center p-5 leading-6 mb-[100px]">
+      <section className="container mx-auto text-center p-5 leading-6 mb-[10px]">
         <Button className="my-2 text-[0.7rem] rounded-xl" variant="link" size="sm">
           Switch to developer mode
           <div className="rounded-xl bg-slate-300  border ms-2">
