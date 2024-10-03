@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
   title: string;
+  heading: string;
   content: React.ReactNode;
 }
 
@@ -42,7 +43,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
            My journey
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
-          I&apos;ve been working on Autonomous Technology for the past 2 years. Here&apos;s
+          I&apos;ve been working as a developer for the past 2 years. Here&apos;s
           a timeline of my journey.
         </p>
       </div>
@@ -63,9 +64,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             </div>
 
             <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
+              <h3 className="md:hidden block text-xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
                 {item.title}
               </h3>
+               <h5 className="my-2">
+                  {item.heading}
+               </h5>
               {item.content}{" "}
             </div>
           </div>

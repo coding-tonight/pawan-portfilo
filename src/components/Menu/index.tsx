@@ -44,16 +44,15 @@ const Menu = () => {
         transition={{
           duration: 0.2,
         }}
-        className="fixed top-1"
+        className="fixed top-1 z-50"
       >
       <section className='container w-[100vw] mx-auto flex justify-center'>
         <Tabs defaultValue='projects'>
             <TabsList className='shadow-md border border-black rounded-2xl p-5'>
-              <TabsTrigger value='projects'>Projects</TabsTrigger>
+              <TabsTrigger value='projects'>About</TabsTrigger>
               <TabsTrigger value='stacks'>Stacks</TabsTrigger>
-              <TabsTrigger value='history'>History</TabsTrigger>
-              <TabsTrigger value='testonimial'>Testonimial</TabsTrigger>
-              <TabsTrigger value='about'>About</TabsTrigger>
+              <TabsTrigger value='testonimial'>Blogs</TabsTrigger>
+              <TabsTrigger value='about'>Contact</TabsTrigger>
             </TabsList>
         </Tabs>
       </section>

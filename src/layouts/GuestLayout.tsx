@@ -1,6 +1,8 @@
 import { Navbar, HeroSection, Menu  } from "@/components"
 import { Timeline } from "@/components/ui/timeline"
 
+import { timelineData } from "@/utils/data"
+
 const GuestLayout:React.FC = () => {
     return (
         <>  
@@ -12,10 +14,7 @@ const GuestLayout:React.FC = () => {
             }}>
             <HeroSection />
             {/* <Tools /> */}
-            <Timeline data={[
-                { title: 'Student', content: 'Business Studies'},
-                { title: 'Frontend Developer', content: 'APA (Asia Population Association)'},
-                { title: 'Full Stack Developer', content: 'APA (Asia Population Association)'}]} />
+            <Timeline data={timelineData} />
             </main>
         </div>
         </>
