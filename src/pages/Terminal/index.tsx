@@ -5,11 +5,16 @@ import { CgClose , CgTerminal} from "react-icons/cg"
 import { Card, CardHeader, CardContent } from "@/components/ui/card"
 
 import { TerminalLayout } from "@/layouts"
+import { useTerminal } from '@/context/TerminalContext'
+import { LS } from '@/context/TerminalContext/types'
 
 
 const Terminal = () => {
     const [command, setCommand] = useState<string>('')
-    const commandRef = useRef<HTMLCollectionBase | null>(null)
+    const commandRef = useRef<HTMLInputElement | null>(null)
+    const { state, dispatch } = useTerminal()
+
+    console.log(state?.display)
 
     const handleInput = (event: FormEvent<HTMLInputElement>): void => {
         setCommand(event.currentTarget.value);
@@ -17,7 +22,12 @@ const Terminal = () => {
 
     const handleEnterPress = (event: KeyboardEvent): void => {
         if(event?.key === 'Enter') {
-            console.log(event.target.value)
+            const inputValue = event.currentTarget as HTMLInputElement
+
+            if(inputValue.value == 'ls') {
+                dispatch({ type: LS })
+            }
+            console.log(inputValue.value)
         }
     }
 
@@ -39,6 +49,10 @@ const Terminal = () => {
                     <div className='highlight-color'>
                         Type / !help
                     </div>
+                    <div className="flex gap-2">
+                        <h1>guest:~$</h1>
+                         <p></p>
+                     </div>
                      <div className="flex gap-2">
                         <h1>guest:~$</h1>
                         <input type='text' className="bg-transparent border-none outline-none w-[100%]"

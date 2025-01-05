@@ -1,7 +1,11 @@
 import { useEffect } from "react"
 
-
-const useKey = (action: Function, key: string) => {
+/**
+ *  usekey Hook
+ * @param action 
+ * @param key 
+ */
+const useKey = (action: Function, key: string): void => {
     const callback = () => {
         action()
     }

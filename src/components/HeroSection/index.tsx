@@ -12,7 +12,6 @@ const HeroSection: React.FC = () => {
           </div>
         </Button>
 
-
         <h1 className="text-md bolder sm:text-2xl my-2">Turning Vision into Interactive Reality</h1>
         <p className="text-slate-500 text-sm text-beauty w-[75%] mx-auto leading-6">
           Hi, I am <span className="p-1 text-white bg-black rounded">Pawan Pulami Magar</span>. 

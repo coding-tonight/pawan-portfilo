@@ -1,16 +1,37 @@
+import { ReactNode } from "react"
+
 /**
  *  children node types
  */
-type children = JSX.Element | React.ReactNode
+type JsxElement = JSX.Element | React.ReactNode
 
 export interface ChildrenNode {
-    children: children
+    children: JsxElement
 }
 
-
 export interface TerminalCommand {
-    description: string;
-    usage: string;
-    command: string,
+    description: string
+    usage: string
+    command: string
     index: number
+}
+
+/**
+ *  ContactMe Media Interface 
+ */
+export interface ContactMe {
+     id: number | string
+     key: string
+     icon: ({ style }: any) => JsxElement
+     link: string
+}
+
+/**
+ *  Menu Item Interface
+ */
+
+export interface MenuItem {
+    id: number | string
+    name: string
+    path: string
 }

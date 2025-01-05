@@ -1,16 +1,36 @@
 import { lazy } from "react"
 
-const Terminal = lazy(() => import('@/pages/terminal'))
-const GuestLayout = lazy(() => import('@/layouts/GuestLayout'))
+import TerminalContextProvider from "@/context/TerminalContext"
+const Terminal = lazy(() => import('@/pages/Terminal'))
+const About = lazy(() => import('@/pages/About'))
+const Projects = lazy(() => import('@/pages/Projects'))
+const Contact = lazy(() => import('@/pages/Contact'))
+const Blogs = lazy(() => import('@/pages/Blogs'))
 
 const routes = [
     {
         path: '/',
-        element: <GuestLayout />
+        element: <About />
+    },
+    {
+        path: '/projects',
+        element: <Projects />
+    },
+    {
+        path: '/blogs',
+        element: <Blogs />
+    },
+    {
+        path: '/contact',
+        element: <Contact />
     },
     {
         path: '/terminal',
-        element: <Terminal />
+        element: (
+            <TerminalContextProvider>
+                <Terminal />
+            </TerminalContextProvider>
+        )
     }
 ]
 

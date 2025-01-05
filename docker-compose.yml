@@ -1,0 +1,44 @@
+services:
+   web:
+    build: .
+    container_name: portfolio-ui
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    ports:
+      - 3000:3000
+    
+    develop:
+       watch:
+        - path: ./package.json
+          action: rebuild
+        - path: ./package-lock.json
+          action: rebuild
+        - path: .
+          target: /ui
+          action: sync
+
+    # depends_on:
+    #   - api
+
+    # api:
+    #   build: ./backend
+    #   port:
+    #     - 8000:8000W
+    #   environment:
+    #     - DB_HOST=postgresdb
+    #     - DB_USER=$POSTGRESDB_USER
+    #     - DB_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
+    #     - DB_NAME=$POSTGRESDB_DATABASE
+    #     - DB_PORT=$POSTGRESDB_DOCKER_PORT
+    #   depends_on:
+    #     - db
+    
+    # db: 
+    #   image: postgres
+    #   ports:
+    #    - 5432:5432 
+    #   volume:
+    #    - portfolio/data/db
+
+    # volumes:
+    #   - portfolio

@@ -1,26 +1,29 @@
 import { createContext, useContext, useMemo, useReducer } from "react"
 import CommandReducer from './reducer'
 
-import { ChildrenNode } from "@/types/global"
+import { ChildrenNode, JsxElement } from "@/types/global"
+import { ActionType } from "./types"
 
 type Status = 'success' | 'error' | 'idle' | 'loading'
 
-interface InitialValue {
+export interface InitialValue {
     inputs: string [],
     command: string [],
+    display: JsxElement[] | string[],
     status: Status
 }
 
 const initialValue: InitialValue = {
     inputs: [],
     command: [],
+    display: [],
     status: 'idle' // loading, error, success, idle
 }
 
-const TerminalCommand = createContext<T>(null)
+const TerminalCommand = createContext(null)
 
 const TerminalContextProvider = ({ children }: ChildrenNode) => {
-    const [state, dispatch] = useReducer<T>(CommandReducer, initialValue)
+    const [state, dispatch] = useReducer<React.Reducer<InitialValue, ActionType>>(CommandReducer, initialValue)
 
     const value = useMemo(() => [state, dispatch], [state])
 
@@ -34,7 +37,7 @@ const TerminalContextProvider = ({ children }: ChildrenNode) => {
 export default TerminalContextProvider
 
 
-const useTeriminal = () => {
+export const useTerminal = () => {
     const context = useContext(TerminalCommand)
 
     if(context === null) {

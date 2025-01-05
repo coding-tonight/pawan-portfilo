@@ -1,12 +1,12 @@
 .terminal-container {
-    // background-image: url('/background.gif') !important;
+    background-image: url('/background.gif') !important;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-clip: border-box;
     background-attachment: fixed;
     min-height: 100dvh;
-    background: #161616;
+    // background: #161616;
 
     .terminal-content {
         background: rgb(1,1,13);

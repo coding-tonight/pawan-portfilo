@@ -1,22 +1,20 @@
-import { Navbar, HeroSection, Menu  } from "@/components"
-import { Timeline } from "@/components/ui/timeline"
+import { Navbar, Menu, Footer } from "@/components"
+import { ChildrenNode } from "@/types/global"
 
-import { timelineData } from "@/utils/data"
 
-const GuestLayout:React.FC = () => {
+const GuestLayout = ({ children }: ChildrenNode) => {
     return (
         <>  
-        <div className="relative  w-full">      
-            <Navbar  />
             <Menu />
-            <main style={{
-                height: 'calc(100dvh - 30px)'
-            }}>
-            <HeroSection />
-            {/* <Tools /> */}
-            <Timeline data={timelineData} />
-            </main>
-        </div>
+            <div className="relative w-full">      
+                <Navbar  />
+                <main style={{
+                    minHeight: 'calc(100dvh - 60px)'
+                }}>
+                  { children }
+                </main>
+                 <Footer />
+            </div>
         </>
     )
 }

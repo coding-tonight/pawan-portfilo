@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   motion,
@@ -13,15 +14,17 @@ import {
     TabsTrigger,
   } from '@/components/ui/tabs' 
 
+
+import { menuItem } from "@/utils/data";
+
 const Menu = () => {
-  const [visible , setVisible] = useState(false)
+  const [visible , setVisible] = useState<Boolean>(false)
   const  { scrollYProgress  } = useScroll()
+  const navigate = useNavigate()
+  const currentLocation: string = window.location.pathname
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
-    // Check if current is not undefined and is a number
     if (typeof current === "number") {
-      // let direction = current! - scrollYProgress.getPrevious()!;
-
       if(current > 0.05) {
          setVisible(true)
       } else {
@@ -29,6 +32,10 @@ const Menu = () => {
       }
     }
   })
+
+  const navigateToPage = (path: string): () => void => {
+     return () => navigate(path)
+  }
 
     return (
       <AnimatePresence mode="wait">
@@ -44,15 +51,16 @@ const Menu = () => {
         transition={{
           duration: 0.2,
         }}
-        className="fixed top-1 z-50"
+        className="fixed top-1 z-50 w-[100dvw]"
       >
-      <section className='container w-[100vw] mx-auto flex justify-center'>
-        <Tabs defaultValue='projects'>
+      <section className="container mx-auto flex justify-center">
+        <Tabs defaultValue={currentLocation}>
             <TabsList className='shadow-md border border-black rounded-2xl p-5'>
-              <TabsTrigger value='projects'>About</TabsTrigger>
-              <TabsTrigger value='stacks'>Stacks</TabsTrigger>
-              <TabsTrigger value='testonimial'>Blogs</TabsTrigger>
-              <TabsTrigger value='about'>Contact</TabsTrigger>
+              {menuItem.map(menu => (    
+                <TabsTrigger value={menu.path} onClick={navigateToPage(menu.path)} key={menu.id}>
+                   {menu.name}
+                </TabsTrigger>
+              ) )}
             </TabsList>
         </Tabs>
       </section>
