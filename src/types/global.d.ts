@@ -35,3 +35,10 @@ export interface MenuItem {
     name: string
     path: string
 }
+
+export interface Project {
+     title: string
+     urls: string
+     stack: string
+     type: string
+}

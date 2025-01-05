@@ -1,20 +1,20 @@
-FROM node:23-alpine3.20
+FROM node:22-alpine3.20
 
 # create group and adding user to that group
 RUN addgroup app && adduser -S  -G app app
 
-USER app
+# USER app
 
-WORKDIR /ui
+WORKDIR /usr/src/app
 
 
 COPY package*.json ./
 
-USER root
+# USER root
 
-RUN chown -R app:app .
+# RUN chown -R app:app .
 
-USER app
+# USER app
 
 RUN npm install -g npm@11.0.0
 

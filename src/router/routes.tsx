@@ -2,15 +2,15 @@ import { lazy } from "react"
 
 import TerminalContextProvider from "@/context/TerminalContext"
 const Terminal = lazy(() => import('@/pages/Terminal'))
-const About = lazy(() => import('@/pages/About'))
+const Home = lazy(() => import('@/pages/Home'))
 const Projects = lazy(() => import('@/pages/Projects'))
-const Contact = lazy(() => import('@/pages/Contact'))
+const About = lazy(() => import('@/pages/About'))
 const Blogs = lazy(() => import('@/pages/Blogs'))
 
 const routes = [
     {
         path: '/',
-        element: <About />
+        element: <Home />
     },
     {
         path: '/projects',
@@ -22,7 +22,7 @@ const routes = [
     },
     {
         path: '/contact',
-        element: <Contact />
+        element: <About />
     },
     {
         path: '/terminal',

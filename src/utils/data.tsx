@@ -123,8 +123,8 @@ const contactMe: ContactMe [] = [
 
 const menuItem: MenuItem [] = [
 	{
-		id: 'about',
-		name: 'About',
+		id: 'home',
+		name: 'Home',
 		path: '/'
 	}, 
 	{
@@ -138,10 +138,25 @@ const menuItem: MenuItem [] = [
 		path: '/blogs'
 	}, 
 	{
-		id: 'contact',
-		name: 'Contact',
+		id: 'about',
+		name: 'About',
 		path: '/contact'
 	}, 
 ]
 
-export { logo, navbarContext, timelineData , contactMe, menuItem }
+const projects = [
+	 {
+		title: 'Asian Population Conference',
+		urls: '',
+		stack: 'React, Laravel',
+		type: 'Contract'
+	 },
+	 {
+		title: 'Billing System',
+		urls: '',
+		stack: 'Django, html, css, javascript',
+		type: 'Contract'
+	 }
+]
+
+export { logo, navbarContext, timelineData , contactMe, menuItem, projects }

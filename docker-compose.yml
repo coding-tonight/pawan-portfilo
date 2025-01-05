@@ -14,8 +14,12 @@ services:
         - path: ./package-lock.json
           action: rebuild
         - path: .
-          target: /ui
+          target: /app
           action: sync
+
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
 
     # depends_on:
     #   - api
