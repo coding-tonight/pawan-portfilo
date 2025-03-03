@@ -8,7 +8,6 @@ export default function (state: InitialValue, action: ActionType): InitialValue 
 			break
 
 		case LS:
-			console.log('ls command is active')
 			state.display = [...state.display, DIR]
 			break
 

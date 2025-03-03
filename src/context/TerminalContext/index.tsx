@@ -20,12 +20,12 @@ const initialValue: InitialValue = {
     status: 'idle' // loading, error, success, idle
 }
 
-const TerminalCommand = createContext(null)
+const TerminalCommand = createContext<[InitialValue, React.Dispatch<ActionType>] | undefined>(undefined)
 
 const TerminalContextProvider = ({ children }: ChildrenNode) => {
-    const [state, dispatch] = useReducer<React.Reducer<InitialValue, ActionType>>(CommandReducer, initialValue)
+    const [state, dispatch] = useReducer<React.Reducer<InitialValue , ActionType>>(CommandReducer, initialValue)
 
-    const value = useMemo(() => [state, dispatch], [state])
+    const value: [InitialValue, React.Dispatch<ActionType>] = useMemo(() => [state, dispatch], [state])
 
     return (
         <TerminalCommand.Provider value={value}>
@@ -40,7 +40,7 @@ export default TerminalContextProvider
 export const useTerminal = () => {
     const context = useContext(TerminalCommand)
 
-    if(context === null) {
+    if(!context) {
         throw new Error('useTerminal must be use within the context of Terminal Context')
     }
 

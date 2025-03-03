@@ -1,11 +1,23 @@
 import { Link } from "react-router-dom"
 
-import { Button } from "../ui/button"
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
 import { RxMoon, RxSun, RxCube } from "react-icons/rx";
 
+import { Button } from "../ui/button"
+import { useTheme } from "@/hooks";
+
+const ThemeMode = ({ theme }: { theme? : string }) => {
+    return (
+        <>
+         {theme === 'light' ?  <RxSun className="h-[20px] w-[20px]" /> :<RxMoon  className="h-[20px] w-[20px]" /> }
+        </>
+    )
+}
 
 const Navbar: React.FC = () => {
+    const [theme, getSystem, switchMode] = useTheme()
+    console.log(theme)
+
     return (
         <header className="shadow-sm">
             <section className="flex container justify-between p-2 mx-auto w-[95%]">
@@ -17,9 +29,8 @@ const Navbar: React.FC = () => {
 
                 <nav className="flex">  
                 <Button variant='ghost' size="icon">
-                    <Link to={'/'}>
-                    {/* <RxMoon  className="h-[20px] w-[20px]" /> */}
-                    <RxSun className="h-[20px] w-[20px]" />
+                    <Link to={'/'} onClick={() => switchMode()}>
+                      <ThemeMode theme={theme} />
                     </Link>
                 </Button>
                 <Button variant='ghost' size="icon">

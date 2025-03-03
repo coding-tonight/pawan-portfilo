@@ -11,6 +11,10 @@ const About = () => {
                 <p className="text-sm text-grey-200">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum consectetur ad consequuntur aspernatur non possimus dignissimos, totam id ducimus omnis? Consectetur maiores, voluptates doloribus corporis officiis facilis vero perspiciatis delectus.
                 </p>
+
+                <div>
+                    r
+                </div>
             </section>
         </GuestLayout>
     )
