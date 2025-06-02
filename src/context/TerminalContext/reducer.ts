@@ -1,21 +1,36 @@
 import { InitialValue } from './index.tsx';
-import { LS, HELP, WHO_IAM, ActionType, DIR } from './types.ts'
+import { LS, HELP, WHO_IAM, ActionType, DIR, CLEAR } from './types.ts'
 
 
 export default function (state: InitialValue, action: ActionType): InitialValue {
-	switch (action.type) {
+	switch (action.type.toLowerCase()) {
 		case HELP:
 			break
 
 		case LS:
-			state.display = [...state.display, DIR]
+			state = {
+         ...state,
+         display: [...state.display, { command: 'ls', results: DIR }],
+     }
 			break
 
 		case WHO_IAM:
-			state.command = [...state.command]
+     state = {
+      ...state, 
+      display: [], 
+      commands: []
+     }
 			break
 
-		default:	
+		case CLEAR:
+      state = {
+       ...state,
+       display: [],
+       commands: []
+      }
+			break
+
+		default:
 			 break
 	}
 

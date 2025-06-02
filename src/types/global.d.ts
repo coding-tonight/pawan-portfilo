@@ -1,9 +1,9 @@
 import { ReactNode } from "react"
 
 /**
- *  children node types
+ *  children node types     
  */
-type JsxElement = JSX.Element | React.ReactNode
+type JsxElement = JSX.Element | React.ReactNode | React.ReactElement
 
 export interface ChildrenNode {
     children: JsxElement

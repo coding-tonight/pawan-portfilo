@@ -1,4 +1,4 @@
-import { FormEvent, useState, useRef, useEffect } from 'react'
+import {  useRef, useEffect, KeyboardEventHandler } from 'react'
 
 import { CgClose , CgTerminal} from "react-icons/cg"
 
@@ -6,27 +6,31 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card"
 
 import { TerminalLayout } from "@/layouts"
 import { useTerminal } from '@/context/TerminalContext'
-import { LS } from '@/context/TerminalContext/types'
+import { LS, CLEAR } from '@/context/TerminalContext/types'
 
 
 const Terminal = () => {
-    const [command, setCommand] = useState<string>('')
     const commandRef = useRef<HTMLInputElement | null>(null)
     const { state, dispatch } = useTerminal()
 
     console.log(state?.display)
 
-    const handleInput = (event: FormEvent<HTMLInputElement>): void => {
-        setCommand(event.currentTarget.value);
-    };
-
-    const handleEnterPress = (event: KeyboardEvent): void => {
+    const handleEnterPress: KeyboardEventHandler<HTMLInputElement> = (event): void => {
         if(event?.key === 'Enter') {
             const inputValue = event.currentTarget as HTMLInputElement
+            switch(inputValue.value) {
+                case LS:
+                    dispatch({ type: LS, payload: '' })
+                    break
 
-            if(inputValue.value == 'ls') {
-                dispatch({ type: LS })
+                case CLEAR:
+                    dispatch({ type: 'reset'})
+                    break
+
+                default:
+                    break
             }
+
             console.log(inputValue.value)
         }
     }
@@ -49,19 +53,43 @@ const Terminal = () => {
                     <div className='highlight-color'>
                         Type / !help
                     </div>
-                    <div className="flex gap-2">
-                        <h1>guest:~$</h1>
-                         <p></p>
-                     </div>
-                     <div className="flex gap-2">
-                        <h1>guest:~$</h1>
-                        <input type='text' className="bg-transparent border-none outline-none w-[100%]"
-                            ref={commandRef} 
-                            value={command}
-                            onInput={handleInput}
-                            onKeyUp={handleEnterPress} 
-                        />
-                     </div>
+                     {state?.display.length ? (
+                         <>
+                          {state?.display.map(data=> (
+                           <>
+                              <div className="flex gap-2" key={data.command}>
+                                <h1>guest:~$</h1>
+                                <input type='text' className="bg-transparent border-none outline-none w-[100%]"
+                                  value={data.command}
+                                />
+                              </div>
+                              <div>
+                                  {data.results.map(item => (
+                                        <span key={item?.toString()} className='me-2'>{item}</span>
+                                  ))}
+                              </div>
+                            </>
+                            ))}
+                         </>
+                     ): (
+                          <div className="flex gap-2">
+                            <h1>guest:~$</h1>
+                            <input type='text' className="bg-transparent border-none outline-none w-[100%]"
+                                ref={commandRef} 
+                                onKeyUp={handleEnterPress} 
+                            />
+                          </div>
+                        )}
+
+                     {state?.commands.length ? (
+                         <div className="flex gap-2">
+                         <h1>guest:~$</h1>
+                         <input type='text' className="bg-transparent border-none outline-none w-[100%]"
+                             ref={commandRef} 
+                             onKeyUp={handleEnterPress} 
+                         />
+                       </div>
+                     ): ''}
                 </CardContent>
              </Card>
             </section>
